@@ -1,3 +1,46 @@
+<#
+.SYNOPSIS
+    This script retrieves information about services from one or multiple remote computers.
+
+.DESCRIPTION
+    'Get-Services.ps1' is a PowerShell script that allows users to gather detailed information about services running on remote computers.
+    The script can connect to multiple computers, resolve their Fully Qualified Domain Names (FQDNs), and retrieve services information.
+    It supports filtering out default system services and can output the results either to a CSV file or display them in a grid view.
+
+.PARAMETER File
+    -File <String>
+        Specifies the path to a text file containing a list of computer names. Each computer name should be on a separate line.
+
+.PARAMETER SaveToFile
+    -SaveToFile <Boolean>
+        Determines whether to save the output to a CSV file. If set to $true, the output is saved to 'Services_<date>.csv'; otherwise, it is displayed in a grid view.
+
+.PARAMETER Computers
+    -Computers <Array>
+        Specifies an array of computer names to connect to and retrieve services information.
+
+.PARAMETER SkipDefaultServices
+    -SkipDefaultServices <Boolean>
+        If set to $true, the script will skip default services (like those running under 'NT AUTHORITY' and 'LocalSystem'). Default is $true.
+
+.EXAMPLE
+    .\Get_Services_Private.ps1 -Computers @('Computer1', 'Computer2')
+    Connects to 'Computer1' and 'Computer2' and retrieves information about their services, displaying the results in a grid view.
+
+.EXAMPLE
+    .\Get_Services_Private.ps1 -File "C:\Computers.txt" -SaveToFile $true
+    Reads a list of computer names from 'C:\Computers.txt', retrieves services information, and saves the results to a CSV file.
+
+.NOTES
+    The script uses PowerShell remoting to connect to remote computers. Ensure that PowerShell remoting is enabled and accessible on the target computers.
+    The user executing the script must have the necessary permissions to access and gather information from the remote computers.
+    
+    This script has been tested on Windows PowerShell 5.1 and PowerShell 7.
+
+.LINK
+    About_Remote_Troubleshooting - https://docs.microsoft.com/powershell/scripting/learn/remoting/about_remote_troubleshooting
+#>
+
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $false)]
