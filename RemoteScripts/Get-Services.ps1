@@ -24,11 +24,11 @@
         If set to $true, the script will skip default services (like those running under 'NT AUTHORITY' and 'LocalSystem'). Default is $true.
 
 .EXAMPLE
-    .\Get_Services_Private.ps1 -Computers @('Computer1', 'Computer2')
+    .\Get-Services.ps1 -Computers @('Computer1', 'Computer2')
     Connects to 'Computer1' and 'Computer2' and retrieves information about their services, displaying the results in a grid view.
 
 .EXAMPLE
-    .\Get_Services_Private.ps1 -File "C:\Computers.txt" -SaveToFile $true
+    .\Get-Services.ps1 -File "C:\Computers.txt" -SaveToFile $true
     Reads a list of computer names from 'C:\Computers.txt', retrieves services information, and saves the results to a CSV file.
 
 .NOTES
